@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= full_title %></title>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%#= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id="container">
+    <div class="section about">
+      <h1>Synclike</h1>
+      <p>
+      automatically add the songs that you like on Pandora to your Rdio collection
+      </p>
+    </div>
+    <div class="section">
+      <%= yield %>
+    </div>
+  </div>
+</body>
+</html>

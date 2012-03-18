@@ -1,0 +1,8 @@
+<div class="feed_entry">
+  <div style="float: left; margin-right: 10px;">
+    <%= image_tag feed_entry.album_art_url, title: feed_entry.album, size: "90x90" %>
+  </div>
+  <strong><%= feed_entry.track %></strong><br>
+  by <%= feed_entry.artist %><br>
+  on <%= feed_entry.album %>
+</div>

@@ -1,0 +1,6 @@
+<h2><%= @user.email %></h2>
+<div>
+  <%= @user.feed_url %>
+</div>
+<%= render @user.feed_entries %>
+<%= link_to "Sync Feed", sync_feed_user_path %>

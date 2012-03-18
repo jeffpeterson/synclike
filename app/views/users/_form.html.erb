@@ -1,0 +1,31 @@
+<%= form_for @user do |f| %>
+  <div class="field">
+    <%= f.label :email, "Email" %><br>
+    <%= f.text_field :email %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :pandora_username, "Pandora Username" %><br>
+    <%= f.text_field :pandora_username %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :feed_url, "Feed Url" %><br>
+    <%= f.text_field :feed_url %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :password, "Password" %><br>
+    <%= f.password_field :password %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :password_confirmation, "Password Confirmation" %><br>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "Sign Up" %>
+  </div>
+  
+<% end %>

@@ -1,0 +1,42 @@
+body {
+  font-family: Georgia;
+  color: #888;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  color: #555;
+}
+
+p {
+  max-width: 35em;
+}
+
+#container {
+  display: inline-block;
+  text-align: left;
+}
+
+.section {
+  display: inline-block;
+  text-align: left;
+  padding: 0 20px;
+  vertical-align: top;
+}
+
+.about {
+  width: 200px;
+}
+
+.field {
+  margin-bottom: 30px;
+}
+
+input[type=text], input[type=password] {
+  color: #555;
+  font-size: 20px;
+  font-family: Georgia;
+  line-height: 30px;
+}
