@@ -20,6 +20,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'rdio-ruby'
 gem 'omniauth-rdio'
 gem 'feedzirra'
 gem 'jquery-rails'
