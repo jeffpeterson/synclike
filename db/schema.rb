@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120319000305) do
+ActiveRecord::Schema.define(:version => 20120319181456) do
 
   create_table "feed_entries", :force => true do |t|
     t.string   "guid"
@@ -29,11 +29,13 @@ ActiveRecord::Schema.define(:version => 20120319000305) do
     t.string   "email"
     t.string   "feed_url"
     t.string   "password_digest"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
+    t.string   "access_token"
+    t.string   "access_token_secret"
   end
 
 end

@@ -7,6 +7,7 @@ Synclike::Application.routes.draw do
   match "/sign-out", to: "sessions#destroy", :as => "sign_out"
   
   match '/auth/:provider/callback', to: 'sessions#create'
+  get '/auth/failure', to: 'sessions#failure'
   
   root to: 'users#show'
   # The priority is based upon order of creation:

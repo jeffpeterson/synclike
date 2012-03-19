@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   before_save :feed_url_from_pandora_username
     
   def self.find_or_create_by_auth_hash auth_hash
-    find_by_provider_and_uid( auth_hash["provider"], auth_hash["uid"] ) || create_with_auth_hash(auth_hash)
+    find_by_uid( auth_hash["uid"] ) || create_with_auth_hash(auth_hash)
   end
 
   
@@ -17,9 +17,10 @@ class User < ActiveRecord::Base
   
   def self.create_with_auth_hash auth_hash
     create! do |user|
-      user.provider = auth_hash["provider"]
-      user.uid      = auth_hash["uid"]
-      user.name     = auth_hash["info"]["name"]
+      user.uid                 = auth_hash["uid"]
+      user.name                = auth_hash["info"]["name"]
+      user.access_token        = auth_hash["credentials"]["token"]
+      user.access_token_secret = auth_hash["credentials"]["secret"]
     end
   end
   
