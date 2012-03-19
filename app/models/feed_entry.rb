@@ -1,6 +1,14 @@
 class FeedEntry < ActiveRecord::Base
   belongs_to :user
   
+  
+  def self.update_feeds
+    User.with_feed.each do |user|
+      FeedEntry.update_feed_for(user)
+    end
+  end
+  
+  
   def self.update_feed_for user
     feed = Feedzirra::Feed.fetch_and_parse user.feed_url
     

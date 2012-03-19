@@ -9,12 +9,12 @@
 <body>
   <div id="container">
     <div class="section about">
-      <h1>Synclike</h1>
-      <p>
-      automatically add the songs that you like on Pandora to your Rdio collection
-      </p>
+      <h1>synclike</h1>
+      <p>automatically add the songs that you like on Pandora to your Rdio collection</p>
+      <%= link_to "Sign Out", sign_out_path if current_user %>
     </div>
     <div class="section">
+      <%= render 'flash_messages' %>
       <%= yield %>
     </div>
   </div>

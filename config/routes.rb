@@ -1,12 +1,14 @@
 Synclike::Application.routes.draw do
-  resources :users do
-    get 'sync_feed', on: :member
-    resources :feed_entries
+  resource :user do
+    get 'update_feed'
   end
+  
+  get '/update_feeds' => 'users#update_feeds'
+  match "/sign-out", to: "sessions#destroy", :as => "sign_out"
   
   match '/auth/:provider/callback', to: 'sessions#create'
   
-  root to: 'users#new'
+  root to: 'users#show'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

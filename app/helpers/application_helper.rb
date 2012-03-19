@@ -5,7 +5,7 @@ module ApplicationHelper
   end
   
   def full_title
-    base_title = "Synclike"
+    base_title = "synclike"
     if @title
       "#{base_title} | #{@title}"
     else
