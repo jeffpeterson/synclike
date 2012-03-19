@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120318201304) do
+ActiveRecord::Schema.define(:version => 20120319000305) do
 
   create_table "feed_entries", :force => true do |t|
     t.string   "guid"
@@ -31,6 +31,9 @@ ActiveRecord::Schema.define(:version => 20120318201304) do
     t.string   "password_digest"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
   end
 
 end
