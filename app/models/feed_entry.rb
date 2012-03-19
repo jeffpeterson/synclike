@@ -2,6 +2,7 @@ require 'rdio'
 class FeedEntry < ActiveRecord::Base
   default_scope order("created_at DESC")
   attr_accessor :rdio
+  attr_accessible :track, :album, :artist, :item_type, :album_art_url
 
   belongs_to :user
   after_create :add_to_rdio
