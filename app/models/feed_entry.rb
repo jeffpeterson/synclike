@@ -5,7 +5,7 @@ class FeedEntry < ActiveRecord::Base
   attr_accessible :track, :album, :artist, :item_type, :album_art_url
 
   belongs_to :user
-  after_create :add_to_rdio
+  after_save :add_to_rdio
   
   def self.update_feeds
     User.with_feed.each do |user|
@@ -33,7 +33,7 @@ class FeedEntry < ActiveRecord::Base
   
   def add_to_rdio
     results = rdio.call('search', query: "#{track} by #{artist}", types: 'Track')['result']['results']
-    results.select! {|track| track['canStream'] }
+    results.select! {|track| track['canStream'] && track["artist"] == artist }
     if results.first
       key = results.first['key']
       rdio.call('addToCollection', keys: key)
