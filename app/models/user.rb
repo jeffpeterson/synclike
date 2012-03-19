@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   validate :email, :feed_url, :pandora_username, presence: true
   
   def self.find_or_create_by_auth_hash auth_hash
-    find_by_provider_and_uid auth_hash["provider"], auth_hash["uid"]) || create_with_auth_hash(auth_hash)
+    find_by_provider_and_uid( auth_hash["provider"], auth_hash["uid"] ) || create_with_auth_hash(auth_hash)
   end
   
   private
