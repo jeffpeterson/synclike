@@ -33,10 +33,9 @@ class FeedEntry < ActiveRecord::Base
   def add_to_rdio
     results = rdio.call('search', query: "#{track} by #{artist}", types: 'Track')['result']['results']
     results.select! {|track| track['canStream'] && track["artist"] == artist }
-    if results.first
-      key = results.first['key']
-      rdio.call('addToCollection', keys: key)
-      rdio.call('setAvailableOffline', keys: key, offline: true)
+    if track = results.first
+      rdio.call('addToCollection', keys: track['key'])
+      rdio.call('setAvailableOffline', keys: track['key'], offline: true) if track['canTether']
     end
   end
   
