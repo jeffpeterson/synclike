@@ -18,9 +18,8 @@ class FeedEntry < ActiveRecord::Base
     feed = Feedzirra::Feed.fetch_and_parse user.feed_url
     
     feed.entries.reverse.each do |fe|
-      if !user.feed_entries.exists?(guid: fe.id) && fe.item_type == 'recentPositiveFeedback'
-        user.feed_entries.create(
-        guid:   fe.id,
+      if fe.item_type == 'recentPositiveFeedback'
+        user.feed_entries.find_or_create_by_track_and_artist(
         track:  fe.track.strip.split("\n").first.strip,
         album:  fe.album.strip,
         artist: fe.artist.strip,
