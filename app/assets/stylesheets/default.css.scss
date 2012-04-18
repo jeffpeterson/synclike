@@ -6,8 +6,17 @@ body {
   text-align: center;
 }
 
-h1,h2 {
+h1,h2, h1 a {
+  text-decoration: none;
   color: #555;
+}
+
+a {
+  color: #68b;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 p {
@@ -17,6 +26,7 @@ p {
 #container {
   display: inline-block;
   text-align: left;
+  padding-bottom: 30px;
 }
 
 .section {

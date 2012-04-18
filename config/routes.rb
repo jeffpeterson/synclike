@@ -2,6 +2,8 @@ Synclike::Application.routes.draw do
   resource :user do
     get 'update_feed'
   end
+
+  get '/settings' => 'users#edit'
   
   get '/update_feeds' => 'users#update_feeds'
   match "/sign-out", to: "sessions#destroy", :as => "sign_out"

@@ -9,16 +9,21 @@
 <body>
   <div id="container">
     <div class="section about">
-      <h1>synclike</h1>
+      <h1><%= link_to "synclike", root_path %></h1>
       <p>automatically add the songs that you like on Pandora to your Rdio collection</p>
-      <%= link_to "Sign Out", sign_out_path if current_user %>
+      <% if current_user%>
+        <%= link_to_unless_current "settings", settings_path do %>
+          <%= link_to "home", root_path %>
+        <% end %> | 
+        <%= link_to "sign out", sign_out_path %>
+      <% end %>
+      <br><br>
+      <small>&copy; jeff peterson</small>
     </div>
     <div class="section">
       <%= render 'flash_messages' %>
       <%= yield %>
     </div>
   </div>
-  <br>
-  <small>&copy; jeff peterson</small>
 </body>
 </html>

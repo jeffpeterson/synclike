@@ -1,4 +1,9 @@
 <%= form_for @user do |f| %>
-  <%= f.label :pandora_username, "Pandora Username" %><br>
-  <%= f.text_field :pandora_username %> <%= f.submit "Save" %>
+  <%= f.label :pandora_username, "Pandora username" %><br>
+  <%= f.text_field :pandora_username %><br>
+  or<br>
+  <%= f.label :pandora_email, "Pandora email" %><br>
+  <%= f.text_field :pandora_email %><br>
+
+  <%= f.submit "Save" %>
 <% end %>

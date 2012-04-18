@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120319181456) do
+ActiveRecord::Schema.define(:version => 20120418024048) do
 
   create_table "feed_entries", :force => true do |t|
     t.string   "guid"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20120319181456) do
     t.string   "name"
     t.string   "access_token"
     t.string   "access_token_secret"
+    t.string   "pandora_username"
   end
 
 end

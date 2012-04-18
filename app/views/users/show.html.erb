@@ -1,7 +1,6 @@
 <h2><%= @user.name %></h2>
-Feed URL: <%= @user.feed_url %>
-<br>
-<%= link_to "Update Feed", update_feed_user_path %>
+<%= link_to "update feed", update_feed_user_path %>
+(automatically updates every minute)
 
 <%= render 'form' unless @user.feed_url? %>
 <%= render @user.feed_entries %>
