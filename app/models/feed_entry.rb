@@ -15,6 +15,8 @@ class FeedEntry < ActiveRecord::Base
   
   def self.update_feed_for user
     feed = Feedzirra::Feed.fetch_and_parse user.feed_url
+
+    return unless feed.respond_to? :entries
     feed_entries = []
     
     feed.entries.reverse.each do |fe|
