@@ -5,8 +5,7 @@ class User < ActiveRecord::Base
   attr_accessor :pandora_email
   attr_accessible :pandora_username, :pandora_email
   
-  has_many :feed_entries
-  has_one :rdio_account
+  has_many :feed_entries, :dependent => :destroy
   
   scope :with_feed, where( User.arel_table[:feed_url].not_eq(nil) )
 
@@ -39,7 +38,10 @@ class User < ActiveRecord::Base
       "?method=authenticate.emailToWebname&email=" +
       pandora_email
     ).read)
-    Rails.logger.info result
-    self.pandora_username = result['result']['webname'] if result['stat'] == 'ok'
+    if result['stat'] == 'ok'
+      self.pandora_username = result['result']['webname']
+    else
+      errors.add(:pandora_username, "could not be found.")
+    end
   end
 end

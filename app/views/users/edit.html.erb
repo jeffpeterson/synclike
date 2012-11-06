@@ -1,4 +1,4 @@
 <%= set_title "settings" %>
 feed url:
-<%= @user.feed_url %><br><br>
+<%= link_to @user.feed_url, @user.feed_url %><br><br>
 <%= render 'form' %>
