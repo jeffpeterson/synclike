@@ -21,15 +21,22 @@ class FeedEntry < ActiveRecord::Base
     
     feed.entries.reverse.each do |fe|
       if fe.item_type == 'recentPositiveFeedback'
-        feed_entry = user.feed_entries.find_or_create_by_track_and_artist(
-          track:  fe.track.strip.split("\n").first.strip,
-          album:  fe.album.strip,
+        track = fe.track.strip.split("\n").first.strip
+        album =  fe.album.strip
+        next if user.feed_entries.where(
+          track: track,
+          album: fe.album.strip
+        ).any?
+
+        feed_entry = user.feed_entries.create(
+          track:  track,
+          album:  album,
           artist: fe.artist.strip,
           album_art_url: fe.album_art_url,
           item_type: fe.item_type
         )
 
-        feed_entries << feed_entry if feed_entry.new_record?
+        feed_entries << feed_entry
       end
     end
 
@@ -42,6 +49,8 @@ class FeedEntry < ActiveRecord::Base
     feed_entries.each do |feed_entry|
       keys << feed_entry.rdio_track['key'] if feed_entry.rdio_track && feed_entry.rdio_track['key']
     end
+
+    Rails.logger.info "Adding keys: " + keys.inspect
 
     return if keys.blank?
 
