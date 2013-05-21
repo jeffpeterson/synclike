@@ -47,9 +47,15 @@ input[type=text], input[type=password] {
   line-height: 30px;
 }
 
+.album-art {
+  float: left;
+  margin-right: 10px;
+}
+
 .feed_entry, .flash {
-  border: 2px solid #CCC;
-  padding: 8px;
+  clear: both;
+  border-bottom: 1px solid #CCC;
+  padding: 0 0 10px;
   margin-top: 10px;
 }
 
